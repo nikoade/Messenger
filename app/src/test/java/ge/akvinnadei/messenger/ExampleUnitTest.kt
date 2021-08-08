@@ -19,7 +19,7 @@ class ExampleUnitTest {
     fun checkUser(){
         var niko = User("Niko", 123, "TahmMain")
         println(niko.toString())
-        
+
         var taso = User("a", 1, "a")
         taso.setUserName("taso")
         taso.setProfession("seraphine otp")
@@ -29,4 +29,5 @@ class ExampleUnitTest {
         taso.printContacts()
 
     }
+
 }
