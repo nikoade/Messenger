@@ -1,5 +1,6 @@
 package ge.akvinnadei.messenger
 
+import ge.akvinnadei.messenger.model.User
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -13,5 +14,19 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+    }
+    @Test
+    fun checkUser(){
+        var niko = User("Niko", 123, "TahmMain")
+        println(niko.toString())
+        
+        var taso = User("a", 1, "a")
+        taso.setUserName("taso")
+        taso.setProfession("seraphine otp")
+
+        taso.addContact(niko)
+        niko.printContacts()
+        taso.printContacts()
+
     }
 }
