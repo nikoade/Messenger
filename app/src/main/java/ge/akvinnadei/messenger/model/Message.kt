@@ -2,12 +2,14 @@ package ge.akvinnadei.messenger.model
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import java.time.Duration
 import java.time.LocalDateTime
 import java.time.Month
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 @RequiresApi(Build.VERSION_CODES.O)
-class Message(_value : String, _sender : User, _receiver : User) {
+class Message(_value: String, _sender: User, _receiver: User) {
     private var value : String
     private var sender : User
     private var receiver : User
@@ -24,7 +26,7 @@ class Message(_value : String, _sender : User, _receiver : User) {
         return value;
     }
 
-    fun setValue(_value : String){
+    fun setValue(_value: String){
         value = _value
     }
 
@@ -42,6 +44,10 @@ class Message(_value : String, _sender : User, _receiver : User) {
 
     fun setReceiver(_receiver: User){
         receiver = _receiver
+    }
+
+    fun getDate(): LocalDateTime{
+        return date
     }
 
     fun getYear(): Int{
@@ -64,8 +70,19 @@ class Message(_value : String, _sender : User, _receiver : User) {
         return date.getMinute()
     }
 
-    fun displayFormat(_date : LocalDateTime): String{
-        var format = ""
+    fun displayFormat(currentDate: LocalDateTime): String{
+        var format : String
+        val dur: Duration = Duration.between(getDate(), currentDate)
+        val hours = dur.toHours()
+        val minutes = dur.toMinutes()
+        if(minutes < 60){
+            format = "" + minutes + " min"
+        }else if(hours < 24){
+            format = "" + hours + " hour"
+        }else{
+            format = "" + getDay() + " " + getMonth().toString().substring(0,3)
+        }
+
         return format
     }
 }
