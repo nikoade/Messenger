@@ -1,5 +1,6 @@
 package ge.akvinnadei.messenger
 
+import ge.akvinnadei.messenger.model.Message
 import ge.akvinnadei.messenger.model.User
 import org.junit.Test
 
@@ -27,6 +28,7 @@ class ExampleUnitTest {
         taso.addContact(niko)
         niko.printContacts()
         taso.printContacts()
+
 
     }
 
