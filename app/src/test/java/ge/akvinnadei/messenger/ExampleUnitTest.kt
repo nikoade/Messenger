@@ -32,8 +32,7 @@ class ExampleUnitTest {
 
         var message1 = Message("zd niko", taso, niko)
         var t = LocalDateTime.of(2021, 8, 9, 18, 40)
-        println(message1.displayFormat(t))
-
+        println(message1.dateDisplayFormat(t))
 
     }
 

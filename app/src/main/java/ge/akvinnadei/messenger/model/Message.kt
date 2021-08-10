@@ -70,7 +70,7 @@ class Message(_value: String, _sender: User, _receiver: User) {
         return date.getMinute()
     }
 
-    fun displayFormat(currentDate: LocalDateTime): String{
+    fun dateDisplayFormat(currentDate: LocalDateTime): String{
         var format : String
         val dur: Duration = Duration.between(getDate(), currentDate)
         val hours = dur.toHours()
@@ -82,7 +82,6 @@ class Message(_value: String, _sender: User, _receiver: User) {
         }else{
             format = "" + getDay() + " " + getMonth().toString().substring(0,3)
         }
-
         return format
     }
 }

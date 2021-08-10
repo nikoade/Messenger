@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_field_height">40dp</dimen>
+    <dimen name="vertical_margin">16dp</dimen>
+    <dimen name="big_margin">40dp</dimen>
+    <dimen name="half_vertical_margin">8dp</dimen>
+    <dimen name="def_corner_radius">36dp</dimen>
+    <dimen name="login_field_width">180dp</dimen>
+</resources>
