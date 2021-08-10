@@ -29,6 +29,7 @@ class ExampleUnitTest {
         taso.addContact(niko)
         niko.printContacts()
         taso.printContacts()
+//        test
 
         var message1 = Message("zd niko", taso, niko)
         var t = LocalDateTime.of(2021, 8, 9, 18, 40)
