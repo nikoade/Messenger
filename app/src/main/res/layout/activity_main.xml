@@ -27,7 +27,7 @@
 
 
 
-    <TextView
+    <EditText
 android:layout_marginTop="@dimen/vertical_margin"
         android:id="@+id/tvNickName"
         android:layout_width="@dimen/login_field_width"
@@ -38,7 +38,7 @@ android:layout_marginTop="@dimen/vertical_margin"
         android:gravity="center"
         android:hint="@string/enter_your_nickname" />
 
-    <TextView
+    <EditText
         android:id="@+id/tvPassword"
         android:layout_width="@dimen/login_field_width"
         android:layout_height="@dimen/login_field_height"
@@ -101,7 +101,7 @@ android:layout_marginTop="@dimen/vertical_margin"
             android:orientation="vertical"
             android:visibility="gone">
 
-            <TextView
+            <EditText
                 android:id="@+id/tvProfession"
                 android:layout_width="@dimen/login_field_width"
                 android:layout_height="@dimen/login_field_height"
