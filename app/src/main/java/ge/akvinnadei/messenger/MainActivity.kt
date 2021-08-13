@@ -14,5 +14,6 @@ class MainActivity : AppCompatActivity() {
             clLogin.visibility=GONE;
             clRegister.visibility= View.VISIBLE;
         }
+        //test
     }
 }
