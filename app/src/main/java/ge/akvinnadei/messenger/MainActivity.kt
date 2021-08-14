@@ -1,5 +1,6 @@
 package ge.akvinnadei.messenger
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,9 +11,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        bSignUp1.setOnClickListener {  view: View ->
-            clLogin.visibility=GONE;
-            clRegister.visibility= View.VISIBLE;
-        }
+//        startActivity(Intent(this, LoginActivity::class.java))
     }
 }

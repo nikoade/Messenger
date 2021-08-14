@@ -1,138 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:gravity="center"
-    android:orientation="vertical">
+    tools:context=".MainActivity">
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <ImageView
-        android:layout_marginBottom="@dimen/vertical_margin"
-        android:src="@drawable/bat"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
-    <TextView
-android:layout_marginTop="@dimen/vertical_margin"
-        android:id="@+id/tvNickName"
-        android:layout_width="@dimen/login_field_width"
-        android:layout_height="@dimen/login_field_height"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/half_vertical_margin"
-        android:background="@drawable/shape_round_corners_light_blue"
-        android:gravity="center"
-        android:hint="@string/enter_your_nickname" />
-
-    <TextView
-        android:id="@+id/tvPassword"
-        android:layout_width="@dimen/login_field_width"
-        android:layout_height="@dimen/login_field_height"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/half_vertical_margin"
-        android:background="@drawable/shape_round_corners_light_blue"
-        android:gravity="center"
-        android:hint="@string/enter_your_password" />
-
-    <FrameLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3">
+        android:fitsSystemWindows="true"
+        android:layout_height="@dimen/appbar_layout_height">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clLogin"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/half_vertical_margin">
+            android:background="@drawable/bat"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/color_blue"
+            app:title="jimi"
+            app:layout_collapseMode="parallax"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            android:layout_height="match_parent">
 
-            <android.widget.Button
-                android:textColor="@color/white"
-                android:background="@drawable/shape_round_corners_blue"
-                android:id="@+id/bLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/login_field_height"
-                android:text="@string/sign_in"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.Toolbar
+                app:layout_collapseMode="pin"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvNotRegistered"
+                android:text="Text.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets youText.app is a simple text editor for Chrome OS and Chrome. It's fast, lets you"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/big_margin"
-                android:text="@string/not_registered_ask"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bLogin" />
+                android:layout_height="wrap_content"/>
 
-            <android.widget.Button
-                android:background="@drawable/shape_grey_corners"
-                android:id="@+id/bSignUp1"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/login_field_height"
-                android:text="@string/sign_up"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvNotRegistered" />
+        </LinearLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/clRegister"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/bAppB"
+        app:layout_anchorGravity="end|bottom"
+        android:layout_margin="@dimen/vertical_margin"/>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bAppB"
+        app:hideOnScroll="true"
+        app:fabAlignmentMode="center"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        //        app:menu="@menu/app_bar_menu"
+
+        <LinearLayout
+            android:background="@color/color_blue"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/tvProfession"
-                android:layout_width="@dimen/login_field_width"
-                android:layout_height="@dimen/login_field_height"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/vertical_margin"
-                android:background="@drawable/shape_round_corners_light_blue"
-                android:gravity="center"
-                android:hint="@string/enter_your_profession" />
-
-            <android.widget.Button
-                android:textColor="@color/white"
-                android:background="@drawable/shape_round_corners_blue"
-                android:id="@+id/bSignUp2"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/login_field_height"
-                android:layout_marginTop="@dimen/big_margin"
-                android:text="@string/sign_up"
-
-                />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            android:layout_height="match_parent"/>
 
 
-    </FrameLayout>
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-
-</androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -22,16 +22,16 @@ class ExampleUnitTest {
         var niko = User("Niko", 123, "TahmMain")
         println(niko.toString())
 
-        var taso = User("a", 1, "a")
-        taso.setUserName("taso")
-        taso.setProfession("seraphine otp")
+        var ika = User("a", 1, "a")
+        ika.setUserName("ika")
+        ika.setProfession("seraphine otp")
 
-        taso.addContact(niko)
+        ika.addContact(niko)
         niko.printContacts()
-        taso.printContacts()
+        ika.printContacts()
 //        test123
 
-        var message1 = Message("zd niko", taso, niko)
+        var message1 = Message("zd niko", ika, niko)
         var t = LocalDateTime.of(2021, 8, 9, 18, 40)
         println(message1.dateDisplayFormat(t))
 
