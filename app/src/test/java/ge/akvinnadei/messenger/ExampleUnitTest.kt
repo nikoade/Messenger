@@ -21,7 +21,6 @@ class ExampleUnitTest {
         var ika = User("a", 1, "a")
         ika.setUserName("ika")
         ika.setProfession("seraphine otp")
-
         ika.addContact(niko)
         niko.printContacts()
         ika.printContacts()
