@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1048818405059",
+    "firebase_url": "https://messenger-5b746-default-rtdb.firebaseio.com",
+    "project_id": "messenger-5b746",
+    "storage_bucket": "messenger-5b746.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048818405059:android:5f1463786b4bb192b45c76",
+        "android_client_info": {
+          "package_name": "ge.akvinnadei.messenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048818405059-qe7g40s6p34urjnhqrt1vstnl7p28fb5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEwr6Ri5HDNtalstwAUF4eCDUtAl1aIw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048818405059-qe7g40s6p34urjnhqrt1vstnl7p28fb5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

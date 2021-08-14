@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        xmlns:tools="http://schemas.android.com/tools"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:fitsSystemWindows="true">-->
+
+<!--        <com.google.android.material.appbar.AppBarLayout-->
+<!--            android:id="@+id/appBarLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:background="#5879ea"-->
+<!--            android:fitsSystemWindows="true"/>-->
+
+<!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
+<!--            android:id="@+id/collapsingToolbarLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:fitsSystemWindows="true"-->
+<!--            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">-->
+
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:layout_gravity="bottom"-->
+<!--            android:layout_marginBottom="100dp"-->
+<!--            app:layout_collapseMode="pin"/>-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/pp_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="fill_parent"-->
+<!--        app:layout_anchor="@+id/collapsingToolbarLayout"-->
+<!--        app:layout_anchorGravity="center"-->
+<!--        tools:context=".MainActivity">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView"-->
+<!--            android:layout_width="263dp"-->
+<!--            android:layout_height="191dp"-->
+<!--            android:layout_marginTop="136dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:srcCompat="@drawable/bat" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/textView2"-->
+<!--            android:layout_width="291dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            android:background="@drawable/shape_round_corners_light_blue"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Taso"-->
+<!--            android:textColor="#000000"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/textView5"-->
+<!--            android:layout_width="291dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="100dp"-->
+<!--            android:background="@drawable/shape_round_corners_light_blue"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Taso"-->
+<!--            android:textColor="#000000"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/button"-->
+<!--            android:layout_width="143dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:backgroundTint="#5579f1"-->
+<!--            android:text="Update"-->
+<!--            android:textSize="16sp"-->
+<!--            app:cornerRadius="10dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            tools:layout_editor_absoluteY="512dp"/>-->
+
+<!--        <Button-->
+<!--            android:id="@+id/button2"-->
+<!--            android:layout_width="128dp"-->
+<!--            android:layout_height="49dp"-->
+<!--            android:backgroundTint="#FFFFFF"-->
+<!--            android:text="Sign Out"-->
+<!--            android:textColor="#605D5D"-->
+<!--            android:textSize="16sp"-->
+<!--            app:cornerRadius="10dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.498"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            tools:layout_editor_absoluteY="569dp" />-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
+<!--        android:id="@+id/pp_add"-->
+<!--        android:layout_width="49dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:backgroundTint="#5879ea"-->
+<!--        android:text="+"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_anchor="@id/bottomAppBar"-->
+<!--        app:tint="@color/white" />-->
+
+
+<!--    <com.google.android.material.bottomappbar.BottomAppBar-->
+<!--        android:id="@+id/bottomAppBar"-->
+<!--        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        app:backgroundTint="@color/white"-->
+<!--        app:fabAlignmentMode="center"-->
+<!--        app:hideOnScroll="true">-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton2"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="33dp"-->
+<!--            android:background="#FFFFFF"-->
+<!--            app:srcCompat="@drawable/ic_baseline_home_24"-->
+<!--            tools:layout_editor_absoluteX="6dp"-->
+<!--            tools:layout_editor_absoluteY="661dp" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton4"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="43dp"-->
+<!--            android:layout_marginLeft="280dp"-->
+<!--            android:backgroundTint="#FFFFFF"-->
+<!--            app:srcCompat="@drawable/ic_baseline_settings_24"-->
+<!--            tools:layout_editor_absoluteX="308dp"-->
+<!--            tools:layout_editor_absoluteY="514dp" />-->
+
+<!--    </com.google.android.material.bottomappbar.BottomAppBar>-->
+
+<!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
