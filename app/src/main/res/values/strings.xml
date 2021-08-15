@@ -1,13 +1,16 @@
 <resources>
     <string name="app_name">Messenger</string>
-    <string name="enter_your_nickname">Enter your nickname</string>
+    <string name="enter_your_userName">Enter your userName</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="enter_your_profession">Enter your profession</string>
-    <string name="sign_in">sign in</string>
+    <string name="sign_in">Sign in</string>
     <string name="not_registered_ask">Not Registered?</string>
-    <string name="sign_up">sign up</string>
-    <string name="your_profession">your profession</string>
-    <string name="your_nickname">your nickname</string>
-    <string name="sign_out">sign out</string>
+    <string name="sign_up">Sign up</string>
+    <string name="your_profession">Your profession</string>
+    <string name="your_userName">Your userName</string>
+    <string name="sign_out">Sign out</string>
     <string name="update">Update</string>
+    <string name="userName_exists">User with this userName already exists</string>
+    <string name="wrong_userName_password">Wrong userName or password</string>
+    <string name="Unknown_error">An unknown error occured</string>
 </resources>

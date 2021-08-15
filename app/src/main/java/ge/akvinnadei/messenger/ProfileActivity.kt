@@ -1,12 +1,15 @@
 package ge.akvinnadei.messenger
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.buttons.*
 
 class ProfileActivity  : AppCompatActivity() {
 
@@ -25,24 +28,30 @@ class ProfileActivity  : AppCompatActivity() {
         etProfileUserName.setText(userName)
         etProfileProfession.setText(profession)
 
+        bHome.setOnClickListener { view: View ->
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         bUpdate.setOnClickListener{ view: View ->
             updateProfile()
         }
+
         bSignOut.setOnClickListener{ view: View ->
-            //preferences.edit().putString("userName", "")
-            //preferences.edit().putString("profession", "")
+            preferences.edit().putString("userName", "")
+            preferences.edit().putString("profession", "")
         }
 
     }
 
     private fun updateProfile() {
         if (!Helper.validateEmptyField(etProfileUserName)) {
-            Toast.makeText(this, getString(R.string.enter_your_nickname), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.enter_your_userName), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (!Helper.validateEmptyField(etProfileProfession)) {
-            Toast.makeText(this, getString(R.string.enter_your_nickname), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.enter_your_userName), Toast.LENGTH_SHORT).show()
             return
         }
 

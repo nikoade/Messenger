@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.buttons.*
 
 class FirstPage : AppCompatActivity() {
     lateinit var button_signup: Button
-    lateinit var nickname: EditText
+    lateinit var userName: EditText
     lateinit var password: EditText
     lateinit var profession: EditText
     override fun onCreate(savedInstanceState: Bundle?) {

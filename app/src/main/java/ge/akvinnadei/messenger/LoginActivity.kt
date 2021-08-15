@@ -6,11 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
-import ge.akvinnadei.messenger.model.TestUser
+import ge.akvinnadei.messenger.model.User
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -23,15 +24,13 @@ class LoginActivity : AppCompatActivity() {
         Firebase.initialize(this)
         var database = Firebase.database
         val myRef = database.getReference("message")
-        myRef.setValue("test")
-
         preferences = getPreferences(MODE_PRIVATE)
         setupView(database)
     }
 
     private fun setupView(database : FirebaseDatabase) {
         bLogin.setOnClickListener {  view: View ->
-            login()
+            login(database)
         }
 
         bSignUp2.setOnClickListener {  view: View ->
@@ -46,8 +45,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun register(database : FirebaseDatabase){
         // validate()
-        if (!Helper.validateEmptyField(etNickName)) {
-            Toast.makeText(this, getString(R.string.enter_your_nickname), Toast.LENGTH_SHORT).show()
+        if (!Helper.validateEmptyField(etUserName)) {
+            Toast.makeText(this, getString(R.string.enter_your_userName), Toast.LENGTH_SHORT).show()
             return
         }
         if(!Helper.validateEmptyField(etPassword)){
@@ -60,23 +59,37 @@ class LoginActivity : AppCompatActivity() {
         }
 
         val usersRef = database.getReference("users")
+        val q = usersRef.orderByChild("userName").equalTo(etUserName.text.toString())
+        q.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val us = snapshot.getValue<Map<String, User>>()
+                if(us != null && us.count() != 0){
+                    Toast.makeText(this@LoginActivity, getString(R.string.userName_exists), Toast.LENGTH_SHORT).show()
+                    return
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@LoginActivity, R.string.Unknown_error, Toast.LENGTH_SHORT).show()
+                return
+            }
+
+        })
         usersRef.push().key?.let {
-            usersRef.child(it).setValue(arrayListOf(
-                TestUser(etNickName.text.toString(), etPassword.text.hashCode(), etProfession.text.toString())
-            ))
+            usersRef.child(it).setValue(
+                User(it, etUserName.text.toString(), etPassword.text.hashCode(), etProfession.text.toString())
+            )
         }
 
-        // TODO:: add user etNickname.text     etPassword.text
-        // preferences.edit().putString("userName", userName)
-        // preferences.edit().putString("profession", profession)
-
+        preferences.edit().putString("userName", etUserName.text.toString())
+        preferences.edit().putString("profession", etProfession.text.toString())
         startActivity(Intent(this, MainActivity::class.java))
     }
 
-    private fun login(){
+
+    private fun login(database : FirebaseDatabase){
         // validate()
-        if (!Helper.validateEmptyField(etNickName)) {
-            Toast.makeText(this, getString(R.string.enter_your_nickname), Toast.LENGTH_SHORT).show()
+        if (!Helper.validateEmptyField(etUserName)) {
+            Toast.makeText(this, getString(R.string.enter_your_userName), Toast.LENGTH_SHORT).show()
             return
         }
         if(!Helper.validateEmptyField(etPassword)){
@@ -84,7 +97,25 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        // TODO: check login etNickname.text  etPassword.text
+        val usersRef = database.getReference("users")
+        val q = usersRef.orderByChild("userName").equalTo(etUserName.text.toString())
+        q.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val us = snapshot.getValue<Map<String, User>>()
+                if(us == null || us.count() == 0){
+                    Toast.makeText(this@LoginActivity, getString(R.string.wrong_userName_password), Toast.LENGTH_SHORT)
+                    return
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@LoginActivity, getString(R.string.Unknown_error), Toast.LENGTH_SHORT).show()
+                return
+            }
+        })
+
+        preferences.edit().putString("userName", etUserName.text.toString())
+        preferences.edit().putString("profession", etProfession.text.toString())
+
         startActivity(Intent(this, MainActivity::class.java))
     }
 

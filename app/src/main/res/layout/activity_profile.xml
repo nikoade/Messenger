@@ -71,7 +71,6 @@
             app:strokeColor="@color/buttonTextColor" />
     </LinearLayout>
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_button"
         android:layout_width="wrap_content"
@@ -91,7 +90,7 @@
 
 
         <ImageButton
-            android:id="@+id/homeButton"
+            android:id="@+id/bHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
@@ -99,7 +98,7 @@
             android:background="@drawable/ic_baseline_home_24" />
 
         <ImageButton
-            android:id="@+id/profileButton"
+            android:id="@+id/bProfilee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
