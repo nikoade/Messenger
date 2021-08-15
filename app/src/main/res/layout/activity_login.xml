@@ -42,7 +42,8 @@
         android:layout_marginBottom="@dimen/half_vertical_margin"
         android:background="@drawable/shape_round_corners_light_blue"
         android:gravity="center"
-        android:hint="@string/enter_your_password" />
+        android:hint="@string/enter_your_password"
+        android:inputType="textPassword" />
 
     <FrameLayout
         android:layout_width="match_parent"

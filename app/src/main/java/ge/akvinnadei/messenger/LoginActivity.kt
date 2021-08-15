@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.database.*
@@ -19,7 +20,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var preferences : SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         Firebase.initialize(this)
@@ -60,27 +60,24 @@ class LoginActivity : AppCompatActivity() {
 
         val usersRef = database.getReference("users")
         val q = usersRef.orderByChild("userName").equalTo(etUserName.text.toString())
-        q.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val us = snapshot.getValue<Map<String, User>>()
-                if(us != null && us.count() != 0){
-                    Toast.makeText(this@LoginActivity, getString(R.string.userName_exists), Toast.LENGTH_SHORT).show()
-                    return
-                }else{
-                    usersRef.push().key?.let {
-                        usersRef.child(it).setValue(
-                            User(it, etUserName.text.toString(), etPassword.text.hashCode(), etProfession.text.toString())
-                        )
-                    }
-                    loginSuccess(User("0", etUserName.text.toString(), 0, etProfession.text.toString()))
+        q.get().addOnSuccessListener {
+            val us = it.getValue<Map<String, User>>()
+            if(us != null && us.count() != 0){
+                Toast.makeText(this@LoginActivity, getString(R.string.userName_exists), Toast.LENGTH_SHORT).show()
+            }else{
+                usersRef.push().key?.let {
+                    usersRef.child(it).setValue(
+                        User(it, etUserName.text.toString(), etPassword.text.toString().hashCode(), etProfession.text.toString())
+                    )
                 }
+                loginSuccess(User("0", etUserName.text.toString(), 0, etProfession.text.toString()))
             }
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@LoginActivity, R.string.Unknown_error, Toast.LENGTH_SHORT).show()
-                return
-            }
-        })
-
+        }.addOnFailureListener{
+            Toast.makeText(this@LoginActivity, R.string.Unknown_error, Toast.LENGTH_SHORT).show()
+            it.message?.let { it1 -> Log.d("ERROR", it1) }
+            it.localizedMessage?.let { it1 -> Log.d("ERROR", it1) }
+            print("sda:" + it.message)
+        }
     }
 
 
@@ -101,11 +98,11 @@ class LoginActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val us = snapshot.getValue<Map<String, User>>()
                 if(us == null || us.count() == 0){
-                    Toast.makeText(this@LoginActivity, getString(R.string.userName_nonExistant), Toast.LENGTH_SHORT)
+                    Toast.makeText(this@LoginActivity, getString(R.string.userName_nonExistant), Toast.LENGTH_SHORT).show()
                 }else{
                     val entry = us.iterator().next().value
                     if(entry.passwordHash != etPassword.text.toString().hashCode()){
-                        Toast.makeText(this@LoginActivity, getString(R.string.wrong_password), Toast.LENGTH_SHORT)
+                        Toast.makeText(this@LoginActivity, getString(R.string.wrong_password), Toast.LENGTH_SHORT).show()
                         return
                     }
                     loginSuccess(entry)
@@ -116,7 +113,6 @@ class LoginActivity : AppCompatActivity() {
                 return
             }
         })
-
     }
 
     private fun loginSuccess(entry : User) {
