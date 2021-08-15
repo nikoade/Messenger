@@ -1,5 +1,6 @@
 package ge.akvinnadei.messenger
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -23,8 +24,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         Firebase.initialize(this)
         var database = Firebase.database
-        val myRef = database.getReference("message")
-        preferences = getPreferences(MODE_PRIVATE)
+        preferences = getSharedPreferences("PREF_NAME", Context.MODE_PRIVATE)
         setupView(database)
     }
 
@@ -66,23 +66,21 @@ class LoginActivity : AppCompatActivity() {
                 if(us != null && us.count() != 0){
                     Toast.makeText(this@LoginActivity, getString(R.string.userName_exists), Toast.LENGTH_SHORT).show()
                     return
+                }else{
+                    usersRef.push().key?.let {
+                        usersRef.child(it).setValue(
+                            User(it, etUserName.text.toString(), etPassword.text.hashCode(), etProfession.text.toString())
+                        )
+                    }
+                    loginSuccess(User("0", etUserName.text.toString(), 0, etProfession.text.toString()))
                 }
             }
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@LoginActivity, R.string.Unknown_error, Toast.LENGTH_SHORT).show()
                 return
             }
-
         })
-        usersRef.push().key?.let {
-            usersRef.child(it).setValue(
-                User(it, etUserName.text.toString(), etPassword.text.hashCode(), etProfession.text.toString())
-            )
-        }
 
-        preferences.edit().putString("userName", etUserName.text.toString())
-        preferences.edit().putString("profession", etProfession.text.toString())
-        startActivity(Intent(this, MainActivity::class.java))
     }
 
 
@@ -103,8 +101,14 @@ class LoginActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val us = snapshot.getValue<Map<String, User>>()
                 if(us == null || us.count() == 0){
-                    Toast.makeText(this@LoginActivity, getString(R.string.wrong_userName_password), Toast.LENGTH_SHORT)
-                    return
+                    Toast.makeText(this@LoginActivity, getString(R.string.userName_nonExistant), Toast.LENGTH_SHORT)
+                }else{
+                    val entry = us.iterator().next().value
+                    if(entry.passwordHash != etPassword.text.toString().hashCode()){
+                        Toast.makeText(this@LoginActivity, getString(R.string.wrong_password), Toast.LENGTH_SHORT)
+                        return
+                    }
+                    loginSuccess(entry)
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -113,9 +117,11 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-        preferences.edit().putString("userName", etUserName.text.toString())
-        preferences.edit().putString("profession", etProfession.text.toString())
+    }
 
+    private fun loginSuccess(entry : User) {
+        preferences.edit().putString("userName", entry.userName).apply()
+        preferences.edit().putString("profession", entry.profession).apply()
         startActivity(Intent(this, MainActivity::class.java))
     }
 

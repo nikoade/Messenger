@@ -1,5 +1,6 @@
 package ge.akvinnadei.messenger
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -17,13 +18,13 @@ class ProfileActivity  : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        preferences = getPreferences(MODE_PRIVATE)
+        preferences = getSharedPreferences("PREF_NAME", Context.MODE_PRIVATE)
         setupView()
     }
 
     private fun setupView() {
-        var userName = "Abdul"// preferences.getSting("userName")
-        var profession = "Shahil"//preferences.getString("profession")
+        var userName = preferences.getString("userName", "")
+        var profession = preferences.getString("profession", "")
 
         etProfileUserName.setText(userName)
         etProfileProfession.setText(profession)
