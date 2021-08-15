@@ -1,23 +1,21 @@
 package ge.akvinnadei.messenger
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import ge.akvinnadei.messenger.model.TestUser
 import kotlinx.android.synthetic.main.activity_login.*
-import java.sql.DatabaseMetaData
 
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var preferences : SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -26,6 +24,8 @@ class LoginActivity : AppCompatActivity() {
         var database = Firebase.database
         val myRef = database.getReference("message")
         myRef.setValue("test")
+
+        preferences = getPreferences(MODE_PRIVATE)
         setupView(database)
     }
 
@@ -56,6 +56,7 @@ class LoginActivity : AppCompatActivity() {
         }
         if(!Helper.validateEmptyField(etProfession)){
             Toast.makeText(this, getString(R.string.enter_your_profession), Toast.LENGTH_SHORT).show()
+            return
         }
 
         val usersRef = database.getReference("users")
@@ -66,6 +67,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // TODO:: add user etNickname.text     etPassword.text
+        // preferences.edit().putString("userName", userName)
+        // preferences.edit().putString("profession", profession)
+
         startActivity(Intent(this, MainActivity::class.java))
     }
 

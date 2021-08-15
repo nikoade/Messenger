@@ -10,4 +10,9 @@
     <color name="light_blue">#E7F1F6</color>
     <color name="color_grey">#9A9999</color>
     <color name="color_blue">#AB1A7AC6</color>
+    <color name="buttonColor">#5479f1</color>
+    <color name="buttonTextColor">#5c5c5c</color>
+    <color name="editTextColor">#f3f6ff</color>
+    <color name="fab_color">#5479f1</color>
+    <color name="search_color">#d4defd</color>
 </resources>
